@@ -1,29 +1,23 @@
-/* Treehouse FSJS Techdegree
- * Project 4 - OOP Game App
- * Phrase.js */
-const parentNode = document.querySelector('#phrase')
+const phraseSection = document.querySelector('#phrase')
 
 class Phrase {
     constructor(phrase) {
         this.phrase = phrase.toLowerCase()
-
     }
 
     addPhraseToDisplay(phrase) {
-        let strings = [];
-        let con = this.phrase.split('')
-
-
+        let listElements = [];
+        let letter = this.phrase.split('')
         for (let i = 0; i < phrase.length; i++) {
-            strings[i] = document.createElement('li');
-            if (con[i] === ' ') {
-                strings[i].className = 'space'
+            listElements[i] = document.createElement('li');
+            if (letter[i] === ' ') {
+                listElements[i].className = 'space'
             } else {
-                strings[i].className = `hide letter ${
-                    con[i]
+                listElements[i].className = `hide letter ${
+                    letter[i]
                 }`
-            } strings[i].innerHTML = con[i]
-            parentNode.children[0].appendChild(strings[i])
+            } listElements[i].innerHTML = letter[i]
+            phraseSection.children[0].appendChild(listElements[i])
         }
     }
 
@@ -37,8 +31,6 @@ class Phrase {
             this.showMatchedLetter(letter)
             return result
         }
-
-
     };
 
 
@@ -53,10 +45,5 @@ class Phrase {
                 hiddenElement[i].className = `show letter ${i}`
             }
         }
-        let string = [];
-
-        /* for (let i = 0; i < phrase.length; i++) {
-    className='show letter ${letter}'
-    } */
     };
 }
