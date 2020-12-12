@@ -1,4 +1,5 @@
 let totalLives = 5
+let pressedButtons = []
 
 class Game {
 
@@ -60,6 +61,9 @@ class Game {
 
     // handles any button clicks
     handleInteraction(button) {
+        if (pressedButtons.includes(button)) {
+            return
+        }
         let phrase = new Phrase(this.activePhrase)
         if (phrase.checkLetter(button)) {
             this.handleKeyboard('chosen', true, 'in-middle', button)
@@ -67,6 +71,7 @@ class Game {
         } else {
             this.handleKeyboard('wrong', true, 'in-middle', button)
             this.removeLife()
+            pressedButtons.push(button)
         }
     }
 

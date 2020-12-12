@@ -14,5 +14,10 @@ for (let i = 0; i < buttons.length; i++) {
 }
 
 document.addEventListener("keyup", event => {
-    game.handleInteraction(event.key);
+    if (/^([a-zA-Z])$/.test(event.key)) {
+        game.handleInteraction(event.key.toLowerCase());
+    }
 });
+
+
+
